@@ -33,7 +33,6 @@ module GraphQL
       # @return [Array] grouped records mirroring the keys
       def fetch(keys)
         models = models(keys: keys).order(:id)
-        dataloader.yield
 
         map = models.group_by { |model| model[@key] }
         keys.map { |key| map[key] || [] }

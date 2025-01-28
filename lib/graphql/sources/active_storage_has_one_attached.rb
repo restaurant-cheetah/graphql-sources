@@ -30,7 +30,6 @@ module GraphQL
       # @return [Array] indexed attachments mirroring the keys
       def fetch(records)
         attachments = attachments(records: records)
-        dataloader.yield
 
         map = attachments.index_by { |attachment| [attachment.record_type, attachment.record_id] }
         records.map { |record| map[[record.class.name, record.id]] }
